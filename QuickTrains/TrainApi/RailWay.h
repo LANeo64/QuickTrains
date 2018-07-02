@@ -13,6 +13,11 @@ public:
 	RailWay();
 	~RailWay();
 
+	bool AddStation(Station* st);
+	bool AddRailPart(RailPart* part);
+	bool AddLocomotive(Locomotive* loco);
+	bool AddTrain(Train* tr);
+
 private:
 	std::vector<Station*> m_stations;
 	std::vector<RailPart*> m_parts;

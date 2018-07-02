@@ -13,6 +13,24 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Hlavičkové soubory\TrainApi">
+      <UniqueIdentifier>{ada89a9c-71c8-4761-bdaa-ad61ca321013}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Zdrojové soubory\TrainApi">
+      <UniqueIdentifier>{7b41c9ff-f883-4dfa-8473-625caf8762bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Zdrojové soubory\TrainStruct">
+      <UniqueIdentifier>{0392859b-edd6-4d9b-807c-b0841f213691}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hlavičkové soubory\TrainStruct">
+      <UniqueIdentifier>{35b5be83-a99f-4a97-bb88-84c925fe99ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hlavičkové soubory\QuickJSON">
+      <UniqueIdentifier>{36b117a9-1e28-4e3b-9f05-f3c1e1ee6f85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Zdrojové soubory\QuickJSON">
+      <UniqueIdentifier>{c8245bbf-704f-4849-8e6b-e087d14ba8a1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -21,115 +39,142 @@
     <ClInclude Include="targetver.h">
       <Filter>Hlavičkové soubory</Filter>
     </ClInclude>
-    <ClInclude Include="RailWay.h">
-      <Filter>Hlavičkové soubory</Filter>
-    </ClInclude>
-    <ClInclude Include="Train.h">
-      <Filter>Hlavičkové soubory</Filter>
-    </ClInclude>
-    <ClInclude Include="MTB.h">
-      <Filter>Hlavičkové soubory</Filter>
-    </ClInclude>
-    <ClInclude Include="RailPart.h">
-      <Filter>Hlavičkové soubory</Filter>
-    </ClInclude>
-    <ClInclude Include="PartSection.h">
-      <Filter>Hlavičkové soubory</Filter>
-    </ClInclude>
-    <ClInclude Include="PartTrack.h">
-      <Filter>Hlavičkové soubory</Filter>
-    </ClInclude>
-    <ClInclude Include="PartTrackSection.h">
-      <Filter>Hlavičkové soubory</Filter>
-    </ClInclude>
-    <ClInclude Include="PartIR.h">
-      <Filter>Hlavičkové soubory</Filter>
-    </ClInclude>
-    <ClInclude Include="PartDisconnector.h">
-      <Filter>Hlavičkové soubory</Filter>
-    </ClInclude>
-    <ClInclude Include="PartSCOM.h">
-      <Filter>Hlavičkové soubory</Filter>
-    </ClInclude>
-    <ClInclude Include="PartLock.h">
-      <Filter>Hlavičkové soubory</Filter>
-    </ClInclude>
-    <ClInclude Include="PartHitch.h">
-      <Filter>Hlavičkové soubory</Filter>
-    </ClInclude>
-    <ClInclude Include="PartSwitch.h">
-      <Filter>Hlavičkové soubory</Filter>
-    </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Hlavičkové soubory</Filter>
     </ClInclude>
-    <ClInclude Include="RailPartType.h">
-      <Filter>Hlavičkové soubory</Filter>
+    <ClInclude Include="Locomotive.h">
+      <Filter>Hlavičkové soubory\TrainStruct</Filter>
+    </ClInclude>
+    <ClInclude Include="MTB.h">
+      <Filter>Hlavičkové soubory\TrainStruct</Filter>
+    </ClInclude>
+    <ClInclude Include="PartDisconnector.h">
+      <Filter>Hlavičkové soubory\TrainStruct</Filter>
+    </ClInclude>
+    <ClInclude Include="PartHitch.h">
+      <Filter>Hlavičkové soubory\TrainStruct</Filter>
+    </ClInclude>
+    <ClInclude Include="PartIR.h">
+      <Filter>Hlavičkové soubory\TrainStruct</Filter>
+    </ClInclude>
+    <ClInclude Include="PartLock.h">
+      <Filter>Hlavičkové soubory\TrainStruct</Filter>
+    </ClInclude>
+    <ClInclude Include="PartSCOM.h">
+      <Filter>Hlavičkové soubory\TrainStruct</Filter>
+    </ClInclude>
+    <ClInclude Include="PartSection.h">
+      <Filter>Hlavičkové soubory\TrainStruct</Filter>
+    </ClInclude>
+    <ClInclude Include="PartSwitch.h">
+      <Filter>Hlavičkové soubory\TrainStruct</Filter>
+    </ClInclude>
+    <ClInclude Include="PartTrack.h">
+      <Filter>Hlavičkové soubory\TrainStruct</Filter>
+    </ClInclude>
+    <ClInclude Include="PartTrackSection.h">
+      <Filter>Hlavičkové soubory\TrainStruct</Filter>
+    </ClInclude>
+    <ClInclude Include="RailPart.h">
+      <Filter>Hlavičkové soubory\TrainStruct</Filter>
+    </ClInclude>
+    <ClInclude Include="Train.h">
+      <Filter>Hlavičkové soubory\TrainStruct</Filter>
+    </ClInclude>
+    <ClInclude Include="QuickJSON.h">
+      <Filter>Hlavičkové soubory\QuickJSON</Filter>
     </ClInclude>
     <ClInclude Include="ApiManager.h">
-      <Filter>Hlavičkové soubory</Filter>
+      <Filter>Hlavičkové soubory\TrainApi</Filter>
+    </ClInclude>
+    <ClInclude Include="HttpClient.h">
+      <Filter>Hlavičkové soubory\TrainApi</Filter>
+    </ClInclude>
+    <ClInclude Include="RailWay.h">
+      <Filter>Hlavičkové soubory\TrainApi</Filter>
     </ClInclude>
     <ClInclude Include="Station.h">
-      <Filter>Hlavičkové soubory</Filter>
+      <Filter>Hlavičkové soubory\TrainStruct</Filter>
     </ClInclude>
-    <ClInclude Include="Locomotive.h">
-      <Filter>Hlavičkové soubory</Filter>
+    <ClInclude Include="Platform.h">
+      <Filter>Hlavičkové soubory\TrainStruct</Filter>
+    </ClInclude>
+    <ClInclude Include="RailPartState.h">
+      <Filter>Hlavičkové soubory\TrainStruct</Filter>
+    </ClInclude>
+    <ClInclude Include="LocoState.h">
+      <Filter>Hlavičkové soubory\TrainStruct</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>Zdrojové soubory</Filter>
     </ClCompile>
-    <ClCompile Include="RailWay.cpp">
-      <Filter>Zdrojové soubory</Filter>
-    </ClCompile>
-    <ClCompile Include="Train.cpp">
-      <Filter>Zdrojové soubory</Filter>
-    </ClCompile>
-    <ClCompile Include="MTB.cpp">
-      <Filter>Zdrojové soubory</Filter>
-    </ClCompile>
-    <ClCompile Include="RailPart.cpp">
-      <Filter>Zdrojové soubory</Filter>
-    </ClCompile>
-    <ClCompile Include="PartSection.cpp">
-      <Filter>Zdrojové soubory</Filter>
-    </ClCompile>
-    <ClCompile Include="PartTrack.cpp">
-      <Filter>Zdrojové soubory</Filter>
-    </ClCompile>
-    <ClCompile Include="PartTrackSection.cpp">
-      <Filter>Zdrojové soubory</Filter>
-    </ClCompile>
-    <ClCompile Include="PartIR.cpp">
-      <Filter>Zdrojové soubory</Filter>
-    </ClCompile>
-    <ClCompile Include="PartDisconnector.cpp">
-      <Filter>Zdrojové soubory</Filter>
-    </ClCompile>
-    <ClCompile Include="PartSCOM.cpp">
-      <Filter>Zdrojové soubory</Filter>
-    </ClCompile>
-    <ClCompile Include="PartLock.cpp">
-      <Filter>Zdrojové soubory</Filter>
-    </ClCompile>
-    <ClCompile Include="PartHitch.cpp">
-      <Filter>Zdrojové soubory</Filter>
-    </ClCompile>
-    <ClCompile Include="PartSwitch.cpp">
-      <Filter>Zdrojové soubory</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Zdrojové soubory</Filter>
     </ClCompile>
     <ClCompile Include="ApiManager.cpp">
-      <Filter>Zdrojové soubory</Filter>
+      <Filter>Zdrojové soubory\TrainApi</Filter>
     </ClCompile>
-    <ClCompile Include="Station.cpp">
-      <Filter>Zdrojové soubory</Filter>
+    <ClCompile Include="HttpClient.cpp">
+      <Filter>Zdrojové soubory\TrainApi</Filter>
     </ClCompile>
     <ClCompile Include="Locomotive.cpp">
-      <Filter>Zdrojové soubory</Filter>
+      <Filter>Zdrojové soubory\TrainStruct</Filter>
+    </ClCompile>
+    <ClCompile Include="MTB.cpp">
+      <Filter>Zdrojové soubory\TrainStruct</Filter>
+    </ClCompile>
+    <ClCompile Include="PartDisconnector.cpp">
+      <Filter>Zdrojové soubory\TrainStruct</Filter>
+    </ClCompile>
+    <ClCompile Include="PartHitch.cpp">
+      <Filter>Zdrojové soubory\TrainStruct</Filter>
+    </ClCompile>
+    <ClCompile Include="PartIR.cpp">
+      <Filter>Zdrojové soubory\TrainStruct</Filter>
+    </ClCompile>
+    <ClCompile Include="PartLock.cpp">
+      <Filter>Zdrojové soubory\TrainStruct</Filter>
+    </ClCompile>
+    <ClCompile Include="PartSCOM.cpp">
+      <Filter>Zdrojové soubory\TrainStruct</Filter>
+    </ClCompile>
+    <ClCompile Include="PartSection.cpp">
+      <Filter>Zdrojové soubory\TrainStruct</Filter>
+    </ClCompile>
+    <ClCompile Include="PartSwitch.cpp">
+      <Filter>Zdrojové soubory\TrainStruct</Filter>
+    </ClCompile>
+    <ClCompile Include="PartTrack.cpp">
+      <Filter>Zdrojové soubory\TrainStruct</Filter>
+    </ClCompile>
+    <ClCompile Include="PartTrackSection.cpp">
+      <Filter>Zdrojové soubory\TrainStruct</Filter>
+    </ClCompile>
+    <ClCompile Include="RailPart.cpp">
+      <Filter>Zdrojové soubory\TrainStruct</Filter>
+    </ClCompile>
+    <ClCompile Include="Train.cpp">
+      <Filter>Zdrojové soubory\TrainStruct</Filter>
+    </ClCompile>
+    <ClCompile Include="RailWay.cpp">
+      <Filter>Zdrojové soubory\TrainApi</Filter>
+    </ClCompile>
+    <ClCompile Include="QuickJSON.cpp">
+      <Filter>Zdrojové soubory\QuickJSON</Filter>
+    </ClCompile>
+    <ClCompile Include="Station.cpp">
+      <Filter>Zdrojové soubory\TrainStruct</Filter>
+    </ClCompile>
+    <ClCompile Include="Platform.cpp">
+      <Filter>Zdrojové soubory\TrainStruct</Filter>
+    </ClCompile>
+    <ClCompile Include="RailPartState.cpp">
+      <Filter>Zdrojové soubory\TrainStruct</Filter>
+    </ClCompile>
+    <ClCompile Include="LocoState.cpp">
+      <Filter>Zdrojové soubory\TrainStruct</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -11,3 +11,13 @@ MTB::MTB(int board, int port)
 MTB::~MTB()
 {
 }
+
+int MTB::GetPort()
+{
+	return m_port;
+}
+
+int MTB::GetBoard()
+{
+	return m_board;
+}
