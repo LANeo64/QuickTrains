@@ -171,6 +171,7 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Train.h" />
     <ClInclude Include="LocoState.h" />
+    <ClInclude Include="Utils.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ApiManager.cpp" />

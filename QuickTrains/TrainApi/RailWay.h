@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <sstream>
 
 #include "Station.h"
 #include "RailPart.h"
@@ -11,6 +12,8 @@ class RailWay
 {
 public:
 	RailWay();
+	RailWay(std::string name);
+	RailWay(int id, std::string name);
 	~RailWay();
 
 	bool AddStation(Station* st);
@@ -19,6 +22,10 @@ public:
 	bool AddTrain(Train* tr);
 
 private:
+	static int s_id;
+
+	int m_id;
+	std::string m_name;
 	std::vector<Station*> m_stations;
 	std::vector<RailPart*> m_parts;
 	std::vector<Locomotive*> m_locomotives;

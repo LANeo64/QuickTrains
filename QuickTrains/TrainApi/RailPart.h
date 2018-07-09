@@ -1,7 +1,5 @@
 #pragma once
 
-#include "RailPartType.h"
-
 class RailPart
 {
 public:

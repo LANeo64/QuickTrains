@@ -31,7 +31,7 @@ int RailPart::GetID()
 	return m_id;
 }
 
-RailPartType RailPart::GetType()
+RailPart::RailPartType RailPart::GetType()
 {
 	return m_type;
 }
@@ -71,7 +71,7 @@ std::string RailPart::GetTypeString()
 	return type;
 }
 
-RailPartType RailPart::GetRailType(std::string type)
+RailPart::RailPartType RailPart::GetRailType(std::string type)
 {
 	RailPartType partType;
 	if (type.compare("vyhybka") == 0) {

@@ -105,6 +105,9 @@
     <ClInclude Include="LocoState.h">
       <Filter>Hlavičkové soubory\TrainStruct</Filter>
     </ClInclude>
+    <ClInclude Include="Utils.h">
+      <Filter>Hlavičkové soubory\TrainApi</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
