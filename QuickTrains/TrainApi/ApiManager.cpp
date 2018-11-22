@@ -30,10 +30,16 @@ void ApiManager::SetServerSubURI(std::string uri)
 	}
 }
 
+void ApiManager::SetHotApi(bool state)
+{
+	m_apiHotMode = state;
+}
+
 ApiManager::ApiManager()
 {
 	m_railWay = new RailWay();
 	m_http = new HttpClient();
+	m_apiHotMode = true;
 }
 
 
