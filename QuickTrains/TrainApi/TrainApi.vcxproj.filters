@@ -25,11 +25,17 @@
     <Filter Include="Hlavičkové soubory\TrainStruct">
       <UniqueIdentifier>{35b5be83-a99f-4a97-bb88-84c925fe99ef}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Hlavičkové soubory\QuickJSON">
+    <Filter Include="Hlavičkové soubory\RapidJSON">
       <UniqueIdentifier>{36b117a9-1e28-4e3b-9f05-f3c1e1ee6f85}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Zdrojové soubory\QuickJSON">
-      <UniqueIdentifier>{c8245bbf-704f-4849-8e6b-e087d14ba8a1}</UniqueIdentifier>
+    <Filter Include="Hlavičkové soubory\RapidJSON\error">
+      <UniqueIdentifier>{54f87c4f-ab55-4822-a502-752e4e0d0187}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hlavičkové soubory\RapidJSON\internal">
+      <UniqueIdentifier>{f16acaab-c8a1-4173-a74f-24c6733f5b2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hlavičkové soubory\RapidJSON\msinttypes">
+      <UniqueIdentifier>{ab99540b-e26c-460e-913e-22cf4593b71a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -81,9 +87,6 @@
     <ClInclude Include="Train.h">
       <Filter>Hlavičkové soubory\TrainStruct</Filter>
     </ClInclude>
-    <ClInclude Include="QuickJSON.h">
-      <Filter>Hlavičkové soubory\QuickJSON</Filter>
-    </ClInclude>
     <ClInclude Include="ApiManager.h">
       <Filter>Hlavičkové soubory\TrainApi</Filter>
     </ClInclude>
@@ -107,6 +110,114 @@
     </ClInclude>
     <ClInclude Include="Utils.h">
       <Filter>Hlavičkové soubory\TrainApi</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\allocators.h">
+      <Filter>Hlavičkové soubory\RapidJSON</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\cursorstreamwrapper.h">
+      <Filter>Hlavičkové soubory\RapidJSON</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\document.h">
+      <Filter>Hlavičkové soubory\RapidJSON</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\encodedstream.h">
+      <Filter>Hlavičkové soubory\RapidJSON</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\encodings.h">
+      <Filter>Hlavičkové soubory\RapidJSON</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\filereadstream.h">
+      <Filter>Hlavičkové soubory\RapidJSON</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\filewritestream.h">
+      <Filter>Hlavičkové soubory\RapidJSON</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\fwd.h">
+      <Filter>Hlavičkové soubory\RapidJSON</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\istreamwrapper.h">
+      <Filter>Hlavičkové soubory\RapidJSON</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\memorybuffer.h">
+      <Filter>Hlavičkové soubory\RapidJSON</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\memorystream.h">
+      <Filter>Hlavičkové soubory\RapidJSON</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\ostreamwrapper.h">
+      <Filter>Hlavičkové soubory\RapidJSON</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\pointer.h">
+      <Filter>Hlavičkové soubory\RapidJSON</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\prettywriter.h">
+      <Filter>Hlavičkové soubory\RapidJSON</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\rapidjson.h">
+      <Filter>Hlavičkové soubory\RapidJSON</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\reader.h">
+      <Filter>Hlavičkové soubory\RapidJSON</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\schema.h">
+      <Filter>Hlavičkové soubory\RapidJSON</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\stream.h">
+      <Filter>Hlavičkové soubory\RapidJSON</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\stringbuffer.h">
+      <Filter>Hlavičkové soubory\RapidJSON</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\writer.h">
+      <Filter>Hlavičkové soubory\RapidJSON</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\error\en.h">
+      <Filter>Hlavičkové soubory\RapidJSON\error</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\error\error.h">
+      <Filter>Hlavičkové soubory\RapidJSON\error</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\internal\biginteger.h">
+      <Filter>Hlavičkové soubory\RapidJSON\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\internal\diyfp.h">
+      <Filter>Hlavičkové soubory\RapidJSON\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\internal\dtoa.h">
+      <Filter>Hlavičkové soubory\RapidJSON\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\internal\ieee754.h">
+      <Filter>Hlavičkové soubory\RapidJSON\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\internal\itoa.h">
+      <Filter>Hlavičkové soubory\RapidJSON\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\internal\meta.h">
+      <Filter>Hlavičkové soubory\RapidJSON\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\internal\pow10.h">
+      <Filter>Hlavičkové soubory\RapidJSON\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\internal\regex.h">
+      <Filter>Hlavičkové soubory\RapidJSON\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\internal\stack.h">
+      <Filter>Hlavičkové soubory\RapidJSON\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\internal\strfunc.h">
+      <Filter>Hlavičkové soubory\RapidJSON\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\internal\strtod.h">
+      <Filter>Hlavičkové soubory\RapidJSON\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\internal\swap.h">
+      <Filter>Hlavičkové soubory\RapidJSON\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\msinttypes\inttypes.h">
+      <Filter>Hlavičkové soubory\RapidJSON\msinttypes</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\msinttypes\stdint.h">
+      <Filter>Hlavičkové soubory\RapidJSON\msinttypes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -163,9 +274,6 @@
     </ClCompile>
     <ClCompile Include="RailWay.cpp">
       <Filter>Zdrojové soubory\TrainApi</Filter>
-    </ClCompile>
-    <ClCompile Include="QuickJSON.cpp">
-      <Filter>Zdrojové soubory\QuickJSON</Filter>
     </ClCompile>
     <ClCompile Include="Station.cpp">
       <Filter>Zdrojové soubory\TrainStruct</Filter>

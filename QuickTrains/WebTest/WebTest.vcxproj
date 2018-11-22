@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{FE69B555-9E6D-4ED6-A24B-E18DD2E635A4}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>WebTest</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="easyhttpcpp\CacheControl.h" />
+    <ClInclude Include="easyhttpcpp\Call.h" />
+    <ClInclude Include="easyhttpcpp\CallInterceptorChain.h" />
+    <ClInclude Include="easyhttpcpp\CallInternal.h" />
+    <ClInclude Include="easyhttpcpp\CallLoggingInterceptor.h" />
+    <ClInclude Include="easyhttpcpp\common\BaseException.h" />
+    <ClInclude Include="easyhttpcpp\common\BaseLogger.h" />
+    <ClInclude Include="easyhttpcpp\common\ByteArrayBuffer.h" />
+    <ClInclude Include="easyhttpcpp\common\Cache.h" />
+    <ClInclude Include="easyhttpcpp\common\CacheInfoWithDataSize.h" />
+    <ClInclude Include="easyhttpcpp\common\CacheManager.h" />
+    <ClInclude Include="easyhttpcpp\common\CacheMetadata.h" />
+    <ClInclude Include="easyhttpcpp\common\CacheStrategy.h" />
+    <ClInclude Include="easyhttpcpp\common\CacheStrategyListener.h" />
+    <ClInclude Include="easyhttpcpp\common\CommonException.h" />
+    <ClInclude Include="easyhttpcpp\common\CommonMacros.h" />
+    <ClInclude Include="easyhttpcpp\common\CoreException.h" />
+    <ClInclude Include="easyhttpcpp\common\CoreLogger.h" />
+    <ClInclude Include="easyhttpcpp\common\DefaultLogWriter.h" />
+    <ClInclude Include="easyhttpcpp\common\ExceptionConstants.h" />
+    <ClInclude Include="easyhttpcpp\common\FileUtil.h" />
+    <ClInclude Include="easyhttpcpp\common\Future.h" />
+    <ClInclude Include="easyhttpcpp\common\LogLevel.h" />
+    <ClInclude Include="easyhttpcpp\common\LogWriter.h" />
+    <ClInclude Include="easyhttpcpp\common\LruCacheByDataSizeStrategy.h" />
+    <ClInclude Include="easyhttpcpp\common\ProjectVersion.h" />
+    <ClInclude Include="easyhttpcpp\common\StringUtil.h" />
+    <ClInclude Include="easyhttpcpp\common\Typedef.h" />
+    <ClInclude Include="easyhttpcpp\Connection.h" />
+    <ClInclude Include="easyhttpcpp\ConnectionInternal.h" />
+    <ClInclude Include="easyhttpcpp\ConnectionPool.h" />
+    <ClInclude Include="easyhttpcpp\ConnectionPoolInternal.h" />
+    <ClInclude Include="easyhttpcpp\ConnectionStatusListener.h" />
+    <ClInclude Include="easyhttpcpp\CrlCheckPolicy.h" />
+    <ClInclude Include="easyhttpcpp\db\AutoSqliteCursor.h" />
+    <ClInclude Include="easyhttpcpp\db\AutoSqliteDatabase.h" />
+    <ClInclude Include="easyhttpcpp\db\AutoSqliteTransaction.h" />
+    <ClInclude Include="easyhttpcpp\db\ContentValues.h" />
+    <ClInclude Include="easyhttpcpp\db\Cursor.h" />
+    <ClInclude Include="easyhttpcpp\db\SqlException.h" />
+    <ClInclude Include="easyhttpcpp\db\SqliteConflictAlgorithm.h" />
+    <ClInclude Include="easyhttpcpp\db\SqliteCursor.h" />
+    <ClInclude Include="easyhttpcpp\db\SqliteDatabase.h" />
+    <ClInclude Include="easyhttpcpp\db\SqliteOpenHelper.h" />
+    <ClInclude Include="easyhttpcpp\db\SqliteQueryBuilder.h" />
+    <ClInclude Include="easyhttpcpp\EasyHttp.h" />
+    <ClInclude Include="easyhttpcpp\EasyHttpContext.h" />
+    <ClInclude Include="easyhttpcpp\EasyHttpInternal.h" />
+    <ClInclude Include="easyhttpcpp\Headers.h" />
+    <ClInclude Include="easyhttpcpp\HttpAuthenticator.h" />
+    <ClInclude Include="easyhttpcpp\HttpAuthenticatorCallback.h" />
+    <ClInclude Include="easyhttpcpp\HttpAuthenticatorTypeDefs.h" />
+    <ClInclude Include="easyhttpcpp\HttpCache.h" />
+    <ClInclude Include="easyhttpcpp\HttpCacheDatabase.h" />
+    <ClInclude Include="easyhttpcpp\HttpCacheEnumerationListener.h" />
+    <ClInclude Include="easyhttpcpp\HttpCacheInfo.h" />
+    <ClInclude Include="easyhttpcpp\HttpCacheInternal.h" />
+    <ClInclude Include="easyhttpcpp\HttpCacheMetadata.h" />
+    <ClInclude Include="easyhttpcpp\HttpCacheStrategy.h" />
+    <ClInclude Include="easyhttpcpp\HttpCacheUpdateCheckPolicy.h" />
+    <ClInclude Include="easyhttpcpp\HttpConstants.h" />
+    <ClInclude Include="easyhttpcpp\HttpEngine.h" />
+    <ClInclude Include="easyhttpcpp\HttpException.h" />
+    <ClInclude Include="easyhttpcpp\HttpFileCache.h" />
+    <ClInclude Include="easyhttpcpp\HttpLruCacheStrategy.h" />
+    <ClInclude Include="easyhttpcpp\HttpTypedefs.h" />
+    <ClInclude Include="easyhttpcpp\HttpUtil.h" />
+    <ClInclude Include="easyhttpcpp\Interceptor.h" />
+    <ClInclude Include="easyhttpcpp\KeepAliveTimeoutListener.h" />
+    <ClInclude Include="easyhttpcpp\KeepAliveTimeoutTask.h" />
+    <ClInclude Include="easyhttpcpp\LoggingInterceptor.h" />
+    <ClInclude Include="easyhttpcpp\LoggingInterceptorFactory.h" />
+    <ClInclude Include="easyhttpcpp\MediaType.h" />
+    <ClInclude Include="easyhttpcpp\messagedigest\DigestUtil.h" />
+    <ClInclude Include="easyhttpcpp\NetworkInterceptorChain.h" />
+    <ClInclude Include="easyhttpcpp\NetworkLoggingInterceptor.h" />
+    <ClInclude Include="easyhttpcpp\Proxy.h" />
+    <ClInclude Include="easyhttpcpp\Request.h" />
+    <ClInclude Include="easyhttpcpp\RequestBody.h" />
+    <ClInclude Include="easyhttpcpp\RequestBodyForByteBuffer.h" />
+    <ClInclude Include="easyhttpcpp\RequestBodyForStream.h" />
+    <ClInclude Include="easyhttpcpp\RequestBodyForString.h" />
+    <ClInclude Include="easyhttpcpp\Response.h" />
+    <ClInclude Include="easyhttpcpp\ResponseBody.h" />
+    <ClInclude Include="easyhttpcpp\ResponseBodyStream.h" />
+    <ClInclude Include="easyhttpcpp\ResponseBodyStreamFromCache.h" />
+    <ClInclude Include="easyhttpcpp\ResponseBodyStreamInternal.h" />
+    <ClInclude Include="easyhttpcpp\ResponseBodyStreamWithCaching.h" />
+    <ClInclude Include="easyhttpcpp\ResponseBodyStreamWithoutCaching.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="easyhttpcpp\CacheControl.cpp" />
+    <ClCompile Include="easyhttpcpp\CallInterceptorChain.cpp" />
+    <ClCompile Include="easyhttpcpp\CallInternal.cpp" />
+    <ClCompile Include="easyhttpcpp\CallLoggingInterceptor.cpp" />
+    <ClCompile Include="easyhttpcpp\common\BaseException.cpp" />
+    <ClCompile Include="easyhttpcpp\common\BaseLogger.cpp" />
+    <ClCompile Include="easyhttpcpp\common\ByteArrayBuffer.cpp" />
+    <ClCompile Include="easyhttpcpp\common\CacheInfoWithDataSize.cpp" />
+    <ClCompile Include="easyhttpcpp\common\CacheManager.cpp" />
+    <ClCompile Include="easyhttpcpp\common\CacheMetadata.cpp" />
+    <ClCompile Include="easyhttpcpp\common\CommonException.cpp" />
+    <ClCompile Include="easyhttpcpp\common\CoreException.cpp" />
+    <ClCompile Include="easyhttpcpp\common\CoreLogger.cpp" />
+    <ClCompile Include="easyhttpcpp\common\DefaultLogWriter.cpp" />
+    <ClCompile Include="easyhttpcpp\common\ExceptionConstants.cpp" />
+    <ClCompile Include="easyhttpcpp\common\FileUtil.cpp" />
+    <ClCompile Include="easyhttpcpp\common\LruCacheByDataSizeStrategy.cpp" />
+    <ClCompile Include="easyhttpcpp\common\ProjectVersion.cpp" />
+    <ClCompile Include="easyhttpcpp\common\StringUtil.cpp" />
+    <ClCompile Include="easyhttpcpp\ConnectionInternal.cpp" />
+    <ClCompile Include="easyhttpcpp\ConnectionPool.cpp" />
+    <ClCompile Include="easyhttpcpp\ConnectionPoolInternal.cpp" />
+    <ClCompile Include="easyhttpcpp\db\ContentValues.cpp" />
+    <ClCompile Include="easyhttpcpp\db\SqlException.cpp" />
+    <ClCompile Include="easyhttpcpp\db\SqliteCursor.cpp" />
+    <ClCompile Include="easyhttpcpp\db\SqliteDatabase.cpp" />
+    <ClCompile Include="easyhttpcpp\db\SqliteOpenHelper.cpp" />
+    <ClCompile Include="easyhttpcpp\db\SqliteQueryBuilder.cpp" />
+    <ClCompile Include="easyhttpcpp\EasyHttp.cpp" />
+    <ClCompile Include="easyhttpcpp\EasyHttpContext.cpp" />
+    <ClCompile Include="easyhttpcpp\EasyHttpInternal.cpp" />
+    <ClCompile Include="easyhttpcpp\Headers.cpp" />
+    <ClCompile Include="easyhttpcpp\HttpCache.cpp" />
+    <ClCompile Include="easyhttpcpp\HttpCacheDatabase.cpp" />
+    <ClCompile Include="easyhttpcpp\HttpCacheInfo.cpp" />
+    <ClCompile Include="easyhttpcpp\HttpCacheInternal.cpp" />
+    <ClCompile Include="easyhttpcpp\HttpCacheMetadata.cpp" />
+    <ClCompile Include="easyhttpcpp\HttpCacheStrategy.cpp" />
+    <ClCompile Include="easyhttpcpp\HttpConstants.cpp" />
+    <ClCompile Include="easyhttpcpp\HttpEngine.cpp" />
+    <ClCompile Include="easyhttpcpp\HttpException.cpp" />
+    <ClCompile Include="easyhttpcpp\HttpFileCache.cpp" />
+    <ClCompile Include="easyhttpcpp\HttpLruCacheStrategy.cpp" />
+    <ClCompile Include="easyhttpcpp\HttpUtil.cpp" />
+    <ClCompile Include="easyhttpcpp\KeepAliveTimeoutTask.cpp" />
+    <ClCompile Include="easyhttpcpp\LoggingInterceptorFactory.cpp" />
+    <ClCompile Include="easyhttpcpp\MediaType.cpp" />
+    <ClCompile Include="easyhttpcpp\messagedigest\DigestUtil.cpp" />
+    <ClCompile Include="easyhttpcpp\NetworkInterceptorChain.cpp" />
+    <ClCompile Include="easyhttpcpp\NetworkLoggingInterceptor.cpp" />
+    <ClCompile Include="easyhttpcpp\Proxy.cpp" />
+    <ClCompile Include="easyhttpcpp\Request.cpp" />
+    <ClCompile Include="easyhttpcpp\RequestBody.cpp" />
+    <ClCompile Include="easyhttpcpp\RequestBodyForByteBuffer.cpp" />
+    <ClCompile Include="easyhttpcpp\RequestBodyForStream.cpp" />
+    <ClCompile Include="easyhttpcpp\RequestBodyForString.cpp" />
+    <ClCompile Include="easyhttpcpp\Response.cpp" />
+    <ClCompile Include="easyhttpcpp\ResponseBody.cpp" />
+    <ClCompile Include="easyhttpcpp\ResponseBodyStreamFromCache.cpp" />
+    <ClCompile Include="easyhttpcpp\ResponseBodyStreamInternal.cpp" />
+    <ClCompile Include="easyhttpcpp\ResponseBodyStreamWithCaching.cpp" />
+    <ClCompile Include="easyhttpcpp\ResponseBodyStreamWithoutCaching.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="WebTest.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

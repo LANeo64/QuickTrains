@@ -39,6 +39,17 @@ bool HttpClient::SetPort(int port)
 	}
 }
 
+bool HttpClient::SetSubURI(std::string uri)
+{
+	if (uri.length() > 0) {
+		m_subURI = uri;
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
 bool HttpClient::CheckAddress(IpAddr address)
 {
 	if (
