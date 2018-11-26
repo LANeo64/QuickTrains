@@ -2,17 +2,10 @@
 #include "ApiManager.h"
 
 
-void ApiManager::SetServerIP(std::string ip)
+void ApiManager::SetServer(std::string server)
 {
-	if (!m_http->SetAddress(ip)) {
-		throw std::invalid_argument("Invalid server socket IP");
-	}
-}
-
-void ApiManager::SetServerIP(HttpClient::IpAddr ip)
-{
-	if (!m_http->SetAddress(ip)) {
-		throw std::invalid_argument("Invalid server socket IP");
+	if (!m_http->SetHost(server)) {
+		throw std::invalid_argument("Invalid server IP or hostname");
 	}
 }
 
