@@ -61,3 +61,17 @@ bool ApiManager::ServerPut(HttpClient::Command com, int id, std::string payload)
 {
 	return m_http->SetData(HttpClient::Request(com,id), payload);
 }
+
+std::string ApiManager::GetLoks()
+{
+	std::string s;
+	try
+	{
+		s = m_http->GetData(HttpClient::Request(HttpClient::LOKS));
+	}
+	catch (const std::exception& e)
+	{
+		std::cout << "Exception:\n" << e.what() << "\n";
+	}
+	return s;
+}

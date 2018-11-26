@@ -4,8 +4,92 @@
 
 HttpClient::HttpClient()
 {
+	m_host = "127.0.0.1";
+	m_port = 80;
+	m_subURI = "";
+	m_encryption = HTTP;
 }
 
+HttpClient::HttpClient(std::string host)
+{
+	if (CheckAddress(host) || CheckName(host)) {
+		m_host = host;
+	}
+	else {
+		m_host = "127.0.0.1";
+	}
+	m_port = 80;
+	m_subURI = "";
+	m_encryption = HTTP;
+}
+
+HttpClient::HttpClient(std::string host, int port, Encryption enc)
+{
+	if (CheckAddress(host) || CheckName(host)) {
+		m_host = host;
+	}
+	else {
+		m_host = "127.0.0.1";
+	}
+	
+	if ((port > 0) && ((port != 80)||(port != 443))) {
+		m_port = port;
+		m_encryption = enc;
+	}
+
+	if((port == 80)&&(enc == HTTP)) {
+		m_port = port;
+		m_encryption = enc;
+	}
+
+	if ((port == 443) && (enc == HTTPS)) {
+		m_port = port;
+		m_encryption = enc;
+	}
+
+	if (((port == 443) && (enc == HTTP))||((port == 80) && (enc == HTTPS))) {
+		m_port = port;
+		m_encryption = AUTO;
+	}
+	m_subURI = "";
+}
+
+HttpClient::HttpClient(std::string host, int port, std::string subURI, Encryption enc)
+{
+	if (CheckAddress(host) || CheckName(host)) {
+		m_host = host;
+	}
+	else {
+		m_host = "127.0.0.1";
+	}
+
+	if ((port > 0) && ((port != 80) || (port != 443))) {
+		m_port = port;
+		m_encryption = enc;
+	}
+
+	if ((port == 80) && (enc == HTTP)) {
+		m_port = port;
+		m_encryption = enc;
+	}
+
+	if ((port == 443) && (enc == HTTPS)) {
+		m_port = port;
+		m_encryption = enc;
+	}
+
+	if (((port == 443) && (enc == HTTP)) || ((port == 80) && (enc == HTTPS))) {
+		m_port = port;
+		m_encryption = AUTO;
+	}
+
+	if (CheckSubURI(subURI)) {
+		m_subURI = subURI;
+	}
+	else {
+		m_subURI = "";
+	}
+}
 
 HttpClient::~HttpClient()
 {
@@ -44,21 +128,32 @@ bool HttpClient::SetSubURI(std::string uri)
 	}
 }
 
-bool HttpClient::Connect(ConnectionMode mode)
+std::string HttpClient::GetData(Request Q, ConnectionMode mode)
 {
-	m_mode = mode;
 	try {
-		tcp::resolver resolver(m_io_context);
-		tcp::resolver::results_type endpoints = resolver.resolve(m_host, "http");
-		m_socket = tcp::socket(m_io_context);
-		boost::asio::connect(m_socket, endpoints);
+		if ((mode == SINGLE) || ((mode == BURST) && (!IsConnected()))) {
+			Connect();
+		}
 	}
-	catch (std::exception& e)
-	{
-		m_lastError = e.what();
-		return false;
+	catch (std::exception& e) {
+
 	}
-	return true;
+
+	try {
+		std::string response = QueryResponse(Q);
+		std::string header = GetHeader(response);
+
+		if (HandleHeader(header)) {
+
+		}
+
+
+		if (HeaderCheck(header)) {
+
+		}
+	}
+
+	return std::string();
 }
 
 std::string HttpClient::GetData(Request Q)
@@ -66,9 +161,14 @@ std::string HttpClient::GetData(Request Q)
 	std::ostringstream data;
 
 	try {
+		boost::asio::io_context io_context;
+		tcp::resolver resolver(io_context);
+		tcp::resolver::results_type endpoints = resolver.resolve(m_host, "https");
+		tcp::socket socket(io_context);
+		boost::asio::connect(socket, endpoints);
 		boost::asio::streambuf request;
 		std::ostream request_stream(&request);
-		request_stream << "GET " << m_subURI;
+		request_stream << "GET " << "https://" << m_host << m_subURI;
 		switch (Q.com) {
 		case BLOKY: request_stream << "/bloky"; break;
 		case BLOKSTAV: request_stream << "/blokstav/" << Q.id; break;
@@ -78,18 +178,12 @@ std::string HttpClient::GetData(Request Q)
 			throw std::invalid_argument("Invalid Command type");
 			break;
 		}
-		request_stream << " HTTP/1.0\r\n";
-		request_stream << "Host: " << m_host << m_subURI << "\r\n";
+		request_stream << "/index.php HTTP/1.0\r\n";
+		request_stream << "Host: " << m_host << "\r\n";
 		request_stream << "Accept: */*\r\n";
-		switch (m_mode) {
-		case SINGLE:request_stream << "Connection: close\r\n"; break;
-		case BURST:request_stream << "Connection: Keep-Alive\r\n"; break;
-		default:
-			throw std::invalid_argument("Invalid data stream connection type");
-			break;
-		}
+		request_stream << "Connection: close\r\n";
 		request_stream << "\r\n";
-
+		
 		boost::asio::write(socket, request);
 		boost::asio::streambuf response;
 		boost::asio::read_until(socket, response, "\r\n");
@@ -109,8 +203,12 @@ std::string HttpClient::GetData(Request Q)
 		}
 		if (status_code != 200)
 		{
-			//std::cout << "Response returned with status code " << status_code << "\n";
-			throw std::runtime_error(Utils::Concat("Invalid response from server: ", status_code).c_str());
+			std::ostringstream os;
+			os << "Http version: " << http_version << "\n";
+			os << "return code: " << status_code << "\n";
+			os << "status message: " << status_message << "\n";
+			std::cout << "Response:\n\n" <<  os.str() << "\n";
+			//throw std::runtime_error(Utils::Concat("Invalid response from server: ", os.str()).c_str());
 		}
 
 		// Read the response headers, which are terminated by a blank line.
@@ -119,8 +217,8 @@ std::string HttpClient::GetData(Request Q)
 		// Process the response headers.
 		std::string header;
 		while (std::getline(response_stream, header) && header != "\r")
-			data << header << "\n";
-		data << "\n";
+			std::cout << header << "\n";
+		std::cout << "\n";
 
 		// Write whatever content we already have to output.
 		if (response.size() > 0)
@@ -143,39 +241,9 @@ std::string HttpClient::GetData(Request Q)
 	return data.str();
 }
 
-bool HttpClient::CheckAddress(IpAddr address)
+bool HttpClient::SetData(Request Q, std::string data)
 {
-	if (
-		(address.A < 256) &&
-		(address.B < 256) &&
-		(address.C < 256) &&
-		(address.D < 256) &&
-		(address.A > 0)
-		) {
-		bool good = true;
-		switch (address.A) {
-		case 10:
-			if ((address.B == 0) && (address.C == 0) && (address.D == 0)) {
-				good = false;
-			}
-			break;
-		case 127:
-			if ((address.B == 0) && (address.C == 0) && (address.D == 0)) {
-				good = false;
-			}
-			break;
-		case 192:
-			if ((address.B != 168) || ((address.C == 0) && (address.D == 0))) {
-				good = false;
-			}
-			break;
-		}
-
-		return good;
-	}
-	else {
-		return false;
-	}
+	return false;
 }
 
 bool HttpClient::CheckAddress(std::string address) {
@@ -209,23 +277,4 @@ bool HttpClient::CheckSubURI(std::string uri)
 	else {
 		return false;
 	}
-}
-
-HttpClient::IpAddr HttpClient::GatherAddress(std::string address)
-{
-	HttpClient::IpAddr add;
-	std::vector<std::string> ip = Utils::Explode(address, '.');
-	if (ip.size() == 4) {
-		add.A = Utils::ToInt(ip.at(0));
-		add.B = Utils::ToInt(ip.at(1));
-		add.C = Utils::ToInt(ip.at(2));
-		add.D = Utils::ToInt(ip.at(3));
-	}
-	else {
-		add.A = 127;
-		add.B = 0;
-		add.C = 0;
-		add.D = 1;
-	}
-	return add;
 }

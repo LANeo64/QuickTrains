@@ -18,11 +18,6 @@ public:
 	void SetServerPort(unsigned int port);
 	void SetServerSubURI(std::string uri);
 	void SetHotApi(bool state);
-	void KRT() { 
-		m_http->Connect();
-		std::string data = m_http->GetData(HttpClient::Request(HttpClient::BLOKY));
-		std::cout << data;
-	}
 
 	// Train control methods
 	std::vector<Locomotive*> GetLocomotives();
@@ -32,6 +27,7 @@ public:
 	Train* GetTrain(std::string name);
 	Locomotive* GetLocomotive(int address);
 	Locomotive* GetLocomotive(std::string name);
+	std::string GetLoks();
 
 	// Rail control methods
 	std::vector<RailPart*> GetRailParts();								// Gets the list of all Railparts
