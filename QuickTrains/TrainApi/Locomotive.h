@@ -15,13 +15,15 @@ public:
 		ELECTRO
 	};
 
+	static LocoClass GetClass(std::string s);
+
 	Locomotive(std::string name, int address, LocoClass _class, std::string owner, std::string designation);
 	~Locomotive();
 
 	int GetAddress();
 
 	void SetNote(std::string note);
-	void SetFunction(LocoState::FunctionKey key, std::string);
+	void SetFunction(LocoState::FunctionKey key, std::string s);
 	void SetState(LocoState* state);
 
 private:

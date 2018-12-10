@@ -4,6 +4,7 @@
 
 #include "RailWay.h"
 #include "HttpClient.h"
+#include "rapidjson\document.h"
 
 class ApiManager
 {
@@ -27,7 +28,8 @@ public:
 	Train* GetTrain(std::string name);
 	Locomotive* GetLocomotive(int address);
 	Locomotive* GetLocomotive(std::string name);
-	std::string GetLoks();
+	std::vector<Locomotive*> GetLoks();
+	void TestIt();
 
 	// Rail control methods
 	std::vector<RailPart*> GetRailParts();								// Gets the list of all Railparts
