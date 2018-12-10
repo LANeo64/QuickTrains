@@ -56,6 +56,8 @@ public:
 	bool SetSubURI(std::string uri);
 	std::string GetData(Request Q, ConnectionMode mode = SINGLE);
 	bool SetData(Request Q, std::string data, ConnectionMode mode = SINGLE);
+	int Test();
+	int Test2();
 
 private:
 	std::string m_host;
@@ -64,15 +66,15 @@ private:
 	std::string m_lastError;
 	Encryption m_encryption;
 
-	boost::asio::io_context m_io_context;
-	tcp::resolver& resolver;
+	//boost::asio::io_context m_io_context;
+	//tcp::resolver& resolver;
 
 	bool CheckAddress(std::string address);
 	bool CheckName(std::string server);
 	bool CheckSubURI(std::string uri);
 
-	bool Connect();
-	bool IsConnected();
-	bool Disconnect();
+	//bool Connect();
+	//bool IsConnected();
+	//bool Disconnect();
 };
 

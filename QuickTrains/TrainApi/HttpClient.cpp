@@ -6,7 +6,7 @@ HttpClient::HttpClient()
 {
 	m_host = "127.0.0.1";
 	m_port = 80;
-	m_subURI = "";
+	m_subURI = "/";
 	m_encryption = HTTP;
 }
 
@@ -19,7 +19,7 @@ HttpClient::HttpClient(std::string host)
 		m_host = "127.0.0.1";
 	}
 	m_port = 80;
-	m_subURI = "";
+	m_subURI = "/";
 	m_encryption = HTTP;
 }
 
@@ -51,7 +51,7 @@ HttpClient::HttpClient(std::string host, int port, Encryption enc)
 		m_port = port;
 		m_encryption = AUTO;
 	}
-	m_subURI = "";
+	m_subURI = "/";
 }
 
 HttpClient::HttpClient(std::string host, int port, std::string subURI, Encryption enc)
@@ -87,7 +87,7 @@ HttpClient::HttpClient(std::string host, int port, std::string subURI, Encryptio
 		m_subURI = subURI;
 	}
 	else {
-		m_subURI = "";
+		m_subURI = "/";
 	}
 }
 
@@ -130,45 +130,17 @@ bool HttpClient::SetSubURI(std::string uri)
 
 std::string HttpClient::GetData(Request Q, ConnectionMode mode)
 {
-	try {
-		if ((mode == SINGLE) || ((mode == BURST) && (!IsConnected()))) {
-			Connect();
-		}
-	}
-	catch (std::exception& e) {
-
-	}
-
-	try {
-		std::string response = QueryResponse(Q);
-		std::string header = GetHeader(response);
-
-		if (HandleHeader(header)) {
-
-		}
-
-
-		if (HeaderCheck(header)) {
-
-		}
-	}
-
-	return std::string();
-}
-
-std::string HttpClient::GetData(Request Q)
-{
 	std::ostringstream data;
 
 	try {
 		boost::asio::io_context io_context;
 		tcp::resolver resolver(io_context);
-		tcp::resolver::results_type endpoints = resolver.resolve(m_host, "https");
+		tcp::resolver::results_type endpoints = resolver.resolve(m_host, "http");
 		tcp::socket socket(io_context);
 		boost::asio::connect(socket, endpoints);
 		boost::asio::streambuf request;
 		std::ostream request_stream(&request);
-		request_stream << "GET " << "https://" << m_host << m_subURI;
+		request_stream << "GET " << m_subURI;
 		switch (Q.com) {
 		case BLOKY: request_stream << "/bloky"; break;
 		case BLOKSTAV: request_stream << "/blokstav/" << Q.id; break;
@@ -207,8 +179,8 @@ std::string HttpClient::GetData(Request Q)
 			os << "Http version: " << http_version << "\n";
 			os << "return code: " << status_code << "\n";
 			os << "status message: " << status_message << "\n";
-			std::cout << "Response:\n\n" <<  os.str() << "\n";
-			//throw std::runtime_error(Utils::Concat("Invalid response from server: ", os.str()).c_str());
+			//std::cout << "Response:\n\n" <<  os.str() << "\n";
+			throw std::runtime_error(Utils::Concat("Invalid response from server: ", os.str()).c_str());
 		}
 
 		// Read the response headers, which are terminated by a blank line.
@@ -216,9 +188,10 @@ std::string HttpClient::GetData(Request Q)
 
 		// Process the response headers.
 		std::string header;
-		while (std::getline(response_stream, header) && header != "\r")
-			std::cout << header << "\n";
-		std::cout << "\n";
+		while (std::getline(response_stream, header) && header != "\r") {
+			//std::cout << header << "\n";
+		}
+		//std::cout << "\n";
 
 		// Write whatever content we already have to output.
 		if (response.size() > 0)
@@ -241,9 +214,96 @@ std::string HttpClient::GetData(Request Q)
 	return data.str();
 }
 
-bool HttpClient::SetData(Request Q, std::string data)
+bool HttpClient::SetData(Request Q, std::string data, ConnectionMode mode)
 {
 	return false;
+}
+
+int HttpClient::Test()
+{
+	try
+	{
+		boost::asio::io_context io_context;
+
+		// Get a list of endpoints corresponding to the server name.
+		tcp::resolver resolver(io_context);
+		tcp::resolver::results_type endpoints = resolver.resolve(m_host, "http");
+
+		// Try each endpoint until we successfully establish a connection.
+		tcp::socket socket(io_context);
+		boost::asio::connect(socket, endpoints);
+
+		// Form the request. We specify the "Connection: close" header so that the
+		// server will close the socket after transmitting the response. This will
+		// allow us to treat all data up until the EOF as the content.
+		boost::asio::streambuf request;
+		std::ostream request_stream(&request);
+		request_stream << "GET " << m_subURI << "/blokstav/127/index.php" << " HTTP/1.0\r\n";
+		request_stream << "Host: " << m_host << "\r\n";
+		request_stream << "Accept: */*\r\n";
+		request_stream << "Connection: close\r\n\r\n";
+
+		// Send the request.
+		boost::asio::write(socket, request);
+
+		// Read the response status line. The response streambuf will automatically
+		// grow to accommodate the entire line. The growth may be limited by passing
+		// a maximum size to the streambuf constructor.
+		boost::asio::streambuf response;
+		boost::asio::read_until(socket, response, "\r\n");
+
+		// Check that response is OK.
+		std::istream response_stream(&response);
+		std::string http_version;
+		response_stream >> http_version;
+		unsigned int status_code;
+		response_stream >> status_code;
+		std::string status_message;
+		std::getline(response_stream, status_message);
+		if (!response_stream || http_version.substr(0, 5) != "HTTP/")
+		{
+			std::cout << "Invalid response\n";
+			return 1;
+		}
+		if (status_code != 200)
+		{
+			std::cout << "Response returned with status code " << status_code << "\n";
+			//return 1;
+		}
+
+		// Read the response headers, which are terminated by a blank line.
+		boost::asio::read_until(socket, response, "\r\n\r\n");
+
+		// Process the response headers.
+		std::string header;
+		while (std::getline(response_stream, header) && header != "\r")
+			std::cout << header << "\n";
+		std::cout << "\n";
+
+		// Write whatever content we already have to output.
+		if (response.size() > 0)
+			std::cout << &response;
+
+		// Read until EOF, writing data to output as we go.
+		boost::system::error_code error;
+		while (boost::asio::read(socket, response,
+			boost::asio::transfer_at_least(1), error))
+			std::cout << &response;
+		if (error != boost::asio::error::eof)
+			throw boost::system::system_error(error);
+	}
+	catch (std::exception& e)
+	{
+		std::cout << "Exception: " << e.what() << "\n";
+	}
+
+	return 0;
+}
+
+int HttpClient::Test2() {
+	
+
+	return 0;
 }
 
 bool HttpClient::CheckAddress(std::string address) {
