@@ -214,8 +214,91 @@ std::string HttpClient::GetData(Request Q, ConnectionMode mode)
 	return data.str();
 }
 
-bool HttpClient::SetData(Request Q, std::string data, ConnectionMode mode)
+bool HttpClient::SetData(Request Q, std::string json, ConnectionMode mode)
 {
+	try {
+		boost::asio::io_context io_context;
+		tcp::resolver resolver(io_context);
+		tcp::resolver::results_type endpoints = resolver.resolve(m_host, "http");
+		tcp::socket socket(io_context);
+		boost::asio::connect(socket, endpoints);
+		boost::asio::streambuf request;
+		std::ostream request_stream(&request);
+		request_stream << "POST " << m_subURI;
+		switch (Q.com) {
+		case BLOKY: request_stream << "/bloky"; break;
+		case BLOKSTAV: request_stream << "/blokstav/" << Q.id; break;
+		case LOKS: request_stream << "/loks"; break;
+		case LOKSTAV: request_stream << "/lokstav/" << Q.id; break;
+		default:
+			throw std::invalid_argument("Invalid Command type");
+			break;
+		}
+		request_stream << "/index.php HTTP/1.0\r\n";
+		request_stream << "Host: " << m_host << "\r\n";
+		request_stream << "User-Agent: C/1.0\r\n";
+		request_stream << "Content-Type: application/json; charset=utf-8 \r\n";
+		request_stream << "Accept: */*\r\n";
+		request_stream << "Content-Length: " << json.length() << "\r\n";
+		request_stream << "Connection: close\r\n";
+		request_stream << "\r\n";
+		request_stream << json;
+
+		boost::asio::write(socket, request);
+		boost::asio::streambuf response;
+		boost::asio::read_until(socket, response, "\r\n");
+
+		// Check that response is OK.
+		std::istream response_stream(&response);
+		std::string http_version;
+		response_stream >> http_version;
+		unsigned int status_code;
+		response_stream >> status_code;
+		std::string status_message;
+		std::getline(response_stream, status_message);
+		if (!response_stream || http_version.substr(0, 5) != "HTTP/")
+		{
+			//std::cout << "Invalid response\n";
+			throw std::runtime_error("Invalid response from server");
+		}
+		if (status_code != 200)
+		{
+			std::ostringstream os;
+			os << "Http version: " << http_version << "\n";
+			os << "return code: " << status_code << "\n";
+			os << "status message: " << status_message << "\n";
+			//std::cout << "Response:\n\n" <<  os.str() << "\n";
+			throw std::runtime_error(Utils::Concat("Invalid response from server: ", os.str()).c_str());
+		}
+
+		// Read the response headers, which are terminated by a blank line.
+		boost::asio::read_until(socket, response, "\r\n\r\n");
+
+		// Process the response headers.
+		std::string header;
+		while (std::getline(response_stream, header) && header != "\r") {
+			//std::cout << header << "\n";
+		}
+		//std::cout << "\n";
+
+		// Write whatever content we already have to output.
+		if (response.size() > 0)
+			data << &response;
+
+		// Read until EOF, writing data to output as we go.
+		boost::system::error_code error;
+		while (boost::asio::read(socket, response,
+			boost::asio::transfer_at_least(1), error))
+			data << &response;
+		if (error != boost::asio::error::eof)
+			throw boost::system::system_error(error);
+	}
+	catch (std::exception& e)
+	{
+		//std::cout << "Exception: " << e.what() << "\n";
+		throw std::runtime_error(Utils::Concat("Invalid response from server: ", e.what()).c_str());
+	}
+
 	return false;
 }
 

@@ -55,7 +55,7 @@ public:
 	bool SetPort(int port);
 	bool SetSubURI(std::string uri);
 	std::string GetData(Request Q, ConnectionMode mode = SINGLE);
-	bool SetData(Request Q, std::string data, ConnectionMode mode = SINGLE);
+	bool SetData(Request Q, std::string json, ConnectionMode mode = SINGLE);
 	int Test();
 	int Test2();
 
